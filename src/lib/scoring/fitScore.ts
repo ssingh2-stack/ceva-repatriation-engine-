@@ -58,7 +58,8 @@ export function gateReason(h: FuneralHome): string | null {
     h.embalmingForTransport ||
     h.consularCoordination ||
     h.repatriationDestinations.length > 0 ||
-    h.communities.length > 0;
+    h.communities.length > 0 ||
+    h.languages.length > 0; // multilingual service = serves diaspora communities
   if (!handlesRemains) return "No repatriation/remains-handling signal (cemetery-only or out of scope)";
   return null;
 }
