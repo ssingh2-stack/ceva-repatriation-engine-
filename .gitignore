@@ -4,3 +4,8 @@ node_modules/
 .env.local
 *.tsbuildinfo
 .DS_Store
+
+# build output
+.next/
+next-env.d.ts
+tsconfig.tsbuildinfo
