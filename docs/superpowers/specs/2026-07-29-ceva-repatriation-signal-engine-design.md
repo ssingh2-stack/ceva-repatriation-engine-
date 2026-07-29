@@ -107,6 +107,13 @@ Sequences are generated per **pain bucket × persona**.
 
 Deterministic unit tests on scoring (fit, intent, tier, pain bucket) and pain×persona sequence selection — reproducible, defensible scores.
 
+## 10a. Deployment
+
+- **Repo:** GitHub `ssingh2-stack/ceva-repatriation-engine-` (private, SSH).
+- **Host:** Railway (Deploy from GitHub repo), auto-deploys `main`. No DB plugin for v1 (data is in `/src/data`).
+- **Railway build gotchas to bake in from the start** (learned on Venn): build deps live in `dependencies` not `devDependencies` (Railway builds with `NODE_ENV=production`, which skips devDeps); pin `next` ≥ 14.2.35 (CVE scanner); generate a domain under Settings → Networking.
+- **Access control:** Railway has no built-in password gate. Add a Next.js **HTTP Basic Auth middleware** reading `DASHBOARD_PASSWORD` (+ optional `DASHBOARD_USER`) from Railway Variables, gating the entire dashboard. This keeps real prospect data off the open web.
+
 ## 11. Non-goals (v1)
 
 - No paid enrichment (Apollo/FullEnrich/Clay) or automated sending (Lemlist/Instantly) — deferred behind stable interfaces
